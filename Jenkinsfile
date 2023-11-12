@@ -17,7 +17,9 @@ checkout scm
 stage('Init'){
 steps{
 // Permet l'authentification
-sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+ withCredentials([usernamePassword(credentialsId: 'dh_cred', usernameVariable: 'DOCKERHUB_CREDENTIALS_USR', passwordVariable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
+                        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                    }
 }
 }
 stage('Build'){
