@@ -1,5 +1,7 @@
 pipeline {
-agent any
+agent {
+        label 'docker-agent'  // Use an agent label for running Docker jobs
+    }
 environment {
 // Ajouter la variable dh_cred comme variables d'authentification
 DOCKERHUB_CREDENTIALS = credentials('dh_cred')
