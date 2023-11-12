@@ -1,0 +1,6 @@
+version: '3'
+services:
+  express-sqlite-app:
+    image: maissabouaouja/express-sqlite-app
+    ports:
+      - "3001:3000"
